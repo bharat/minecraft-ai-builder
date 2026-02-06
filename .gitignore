@@ -16,6 +16,8 @@ server/server.properties
 server/cache/
 server/logs/
 server/dev-world/
+server/dev-world_nether/
+server/dev-world_the_end/
 server/world*/
 server/libraries/
 server/versions/
@@ -27,10 +29,18 @@ server/banned-*.json
 server/ops.json
 server/whitelist.json
 server/permissions.yml
+server/version_history.json
+server/bukkit.yml
+server/commands.yml
+server/help.yml
+server/spigot.yml
 
 # Keep the plugins dir structure but not jars
 server/plugins/*.jar
 server/plugins/AIBuilder/
+server/plugins/.paper-remapped/
+server/plugins/bStats/
+server/plugins/spark/
 !server/plugins/.gitkeep
 
 # Secrets

@@ -1,0 +1,32 @@
+{
+  "name": "Minecraft AI Builder",
+  "image": "mcr.microsoft.com/devcontainers/java:21-bookworm",
+
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "java.configuration.updateBuildConfiguration": "automatic",
+        "java.jdt.ls.java.home": "/usr/lib/jvm/msopenjdk-current",
+        "editor.formatOnSave": true
+      },
+      "extensions": [
+        "vscjava.vscode-java-pack",
+        "vscjava.vscode-gradle"
+      ]
+    }
+  },
+
+  "forwardPorts": [25565],
+  "portsAttributes": {
+    "25565": {
+      "label": "Minecraft Server",
+      "onAutoForward": "notify"
+    }
+  },
+
+  "postCreateCommand": "bash setup-server.sh",
+
+  "remoteEnv": {
+    "JAVA_HOME": "/usr/lib/jvm/msopenjdk-current"
+  }
+}
