@@ -13,13 +13,18 @@ public class AIBuilderPlugin extends JavaPlugin {
         // Save default config
         saveDefaultConfig();
 
-        String apiKey = getConfig().getString("openai-api-key", "");
-        if (apiKey.isEmpty() || apiKey.equals("YOUR_API_KEY_HERE")) {
+        String envKey = System.getenv("OPENAI_API_KEY");
+        String configKey = getConfig().getString("openai-api-key", "");
+        if ((envKey == null || envKey.isEmpty()) &&
+                (configKey.isEmpty() || configKey.equals("YOUR_API_KEY_HERE"))) {
             getLogger().warning("==============================================");
             getLogger().warning("  AIBuilder: No OpenAI API key configured!");
-            getLogger().warning("  Set it in plugins/AIBuilder/config.yml");
+            getLogger().warning("  Set OPENAI_API_KEY environment variable");
             getLogger().warning("  or use: /aiconfig apikey <your-key>");
             getLogger().warning("==============================================");
+        } else {
+            getLogger().info("API key loaded" +
+                    (envKey != null && !envKey.isEmpty() ? " from environment variable." : " from config.yml."));
         }
 
         // Initialize services

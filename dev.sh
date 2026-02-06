@@ -2,11 +2,25 @@
 # Build the plugin and start the local dev server
 set -e
 
-export JAVA_HOME="${JAVA_HOME:-/opt/homebrew/opt/openjdk@21/libexec/openjdk.jdk/Contents/Home}"
+if [ -d "/opt/homebrew/opt/openjdk@21/libexec/openjdk.jdk/Contents/Home" ]; then
+    export JAVA_HOME="${JAVA_HOME:-/opt/homebrew/opt/openjdk@21/libexec/openjdk.jdk/Contents/Home}"
+elif [ -d "/usr/lib/jvm/msopenjdk-current" ]; then
+    export JAVA_HOME="${JAVA_HOME:-/usr/lib/jvm/msopenjdk-current}"
+fi
 export PATH="$JAVA_HOME/bin:$PATH"
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 SERVER_DIR="$SCRIPT_DIR/server"
+
+# Load secrets from .env file if it exists
+if [ -f "$SCRIPT_DIR/.env" ]; then
+    set -a
+    source "$SCRIPT_DIR/.env"
+    set +a
+    echo "Loaded environment from .env"
+else
+    echo "No .env file found. Copy .env.example to .env and add your API keys."
+fi
 
 # Check if Paper jar exists
 if [ ! -f "$SERVER_DIR/paper.jar" ]; then
@@ -27,4 +41,4 @@ echo "Use '/ai build me a house' in-game to test."
 echo "Press Ctrl+C to stop."
 echo ""
 cd "$SERVER_DIR"
-java -Xmx2G -Xms1G -jar paper.jar --nogui
+java -Xmx512M -Xms512M -jar paper.jar --nogui

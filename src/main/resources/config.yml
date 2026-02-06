@@ -1,4 +1,8 @@
 # AI Builder Configuration
+#
+# API KEY: The recommended way is to set the OPENAI_API_KEY environment variable
+# (via a .env file — see .env.example). The env var takes priority over this config.
+# You can also set it here or use /aiconfig apikey <key> in-game.
 # Get your API key from https://platform.openai.com/api-keys
 openai-api-key: "YOUR_API_KEY_HERE"
 

@@ -87,12 +87,16 @@ public class AIService {
     public CompletableFuture<AIResponse> chat(List<ConversationMessage> history, Location playerLocation) {
         return CompletableFuture.supplyAsync(() -> {
             try {
-                String apiKey = plugin.getConfig().getString("openai-api-key", "");
+                // Environment variable takes priority, then config.yml
+                String apiKey = System.getenv("OPENAI_API_KEY");
+                if (apiKey == null || apiKey.isEmpty()) {
+                    apiKey = plugin.getConfig().getString("openai-api-key", "");
+                }
                 String model = plugin.getConfig().getString("openai-model", "gpt-4o");
 
                 if (apiKey.isEmpty() || apiKey.equals("YOUR_API_KEY_HERE")) {
                     return new AIResponse(AIResponse.Type.ERROR,
-                            "No API key configured! Use /aiconfig apikey <key>", null);
+                            "No API key configured! Set OPENAI_API_KEY env var or use /aiconfig apikey <key>", null);
                 }
 
                 // Build messages array

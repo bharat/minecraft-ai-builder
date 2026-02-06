@@ -12,6 +12,7 @@ build/
 
 # Server runtime (don't commit the entire server)
 server/paper.jar
+server/server.properties
 server/cache/
 server/logs/
 server/dev-world/
@@ -31,6 +32,9 @@ server/permissions.yml
 server/plugins/*.jar
 server/plugins/AIBuilder/
 !server/plugins/.gitkeep
+
+# Secrets
+.env
 
 # OS files
 .DS_Store

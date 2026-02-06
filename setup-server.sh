@@ -3,8 +3,8 @@
 set -e
 
 SERVER_DIR="$(dirname "$0")/server"
-PAPER_VERSION="1.21.4"
-PAPER_BUILD="192"
+PAPER_VERSION="1.21.11"
+PAPER_BUILD="69"
 PAPER_JAR="paper-${PAPER_VERSION}-${PAPER_BUILD}.jar"
 PAPER_URL="https://api.papermc.io/v2/projects/paper/versions/${PAPER_VERSION}/builds/${PAPER_BUILD}/downloads/${PAPER_JAR}"
 
