@@ -1,0 +1,18 @@
+# AI Builder Configuration
+# Get your API key from https://platform.openai.com/api-keys
+openai-api-key: "YOUR_API_KEY_HERE"
+
+# Model to use (gpt-4o is recommended for best building results)
+openai-model: "gpt-4o"
+
+# Maximum blocks that can be placed in a single build command
+max-blocks: 10000
+
+# Build speed: blocks placed per tick (20 ticks = 1 second)
+blocks-per-tick: 50
+
+# Whether to allow AI to respond to chat messages starting with "AI,"
+chat-trigger-enabled: true
+
+# Chat trigger prefix (case-insensitive)
+chat-trigger-prefix: "AI,"

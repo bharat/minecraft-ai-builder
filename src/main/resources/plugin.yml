@@ -1,0 +1,24 @@
+name: AIBuilder
+version: '${version}'
+main: com.aibuilder.AIBuilderPlugin
+api-version: '1.21'
+description: AI-powered building assistant for Minecraft
+authors: [bharat]
+
+commands:
+  ai:
+    description: Talk to the AI builder
+    usage: /ai <message>
+    permission: aibuilder.use
+  aiconfig:
+    description: Configure the AI builder plugin
+    usage: /aiconfig <key> <value>
+    permission: aibuilder.admin
+
+permissions:
+  aibuilder.use:
+    description: Allows using the AI builder
+    default: op
+  aibuilder.admin:
+    description: Allows configuring the AI builder
+    default: op

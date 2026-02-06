@@ -1,0 +1,37 @@
+# Build output
+build/
+.gradle/
+
+# IDE
+.idea/
+*.iml
+.vscode/
+.classpath
+.project
+.settings/
+
+# Server runtime (don't commit the entire server)
+server/paper.jar
+server/cache/
+server/logs/
+server/dev-world/
+server/world*/
+server/libraries/
+server/versions/
+server/bundler/
+server/config/
+server/.console_history
+server/usercache.json
+server/banned-*.json
+server/ops.json
+server/whitelist.json
+server/permissions.yml
+
+# Keep the plugins dir structure but not jars
+server/plugins/*.jar
+server/plugins/AIBuilder/
+!server/plugins/.gitkeep
+
+# OS files
+.DS_Store
+Thumbs.db
